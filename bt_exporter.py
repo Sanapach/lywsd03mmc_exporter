@@ -52,7 +52,7 @@ class AppMetrics:
         for mac, location in self.devices:
             log.info(f"Fetching '{mac}' ({location})")
             p = btle.Peripheral()
-            p.setDelegate(XiaoMiTemp(mac, location, self.temperature, self.humidity, self.battery))
+            p.withDelegate(XiaoMiTemp(mac, location, self.temperature, self.humidity, self.battery))
 
             # BLE performs very poorly, constant errors are not uncommon
             for attempt in range(10):
